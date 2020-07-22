@@ -1,21 +1,17 @@
 /// <reference types="cypress" />
  
-context('testar Home Page', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:3000')
+context('Torne-se um programador', () => {
+  
+  it('Acessar a página do google', () => {
+    cy.visit('http://google.com.br')
   })
 
-  it('Deve preencher um CPF e verificar como válido', () => {
-    cy.get('input').type('351.455.030-16')
-    cy.get('form button').click()
-    cy.get('.alert-success').should("to.have.length", 1)
-    cy.get('.alert-danger').should("to.have.length", 0)
+  it('Deve buscar por torne-se um programador no google',() =>{
+    cy.get('input[name="q"]').type('Torne-se um programador')
+    cy.get('form').submit()
   })
 
-  it('Deve preencher um CPF e verificar como inválido', () => {
-    cy.get('input').type('351.455.030-26')
-    cy.get('form button').click()
-    cy.get('.alert-success').should("to.have.length", 0)
-    cy.get('.alert-danger').should("to.have.length", 1)
+  it('Deve abrir o site do Torne-se um programador',() =>{
+    let links = cy.get('#search .rc a[href="http://www.torneseumprogramador.com.br/"').click()
   })
 })
